@@ -1,16 +1,18 @@
-USE master;
+
+
+SELECT name, collation_name FROM sys.databases;
+GO
+ALTER DATABASE db_ab2cab_filmoteka SET SINGLE_USER WITH
+ROLLBACK IMMEDIATE;
+GO
+ALTER DATABASE db_ab2cab_filmoteka COLLATE Croatian_CI_AS;
+GO
+ALTER DATABASE db_ab2cab_filmoteka SET MULTI_USER;
+GO
+SELECT name, collation_name FROM sys.databases;
 GO
 
--- Brišemo postojeæu bazu ako postoji
-DROP DATABASE IF EXISTS filmotekawp6;
-GO
 
--- Kreiramo novu bazu podataka s ispravnim collationom
-CREATE DATABASE filmotekawp6 COLLATE Croatian_CI_AS;
-GO
-
-USE filmotekawp6;
-GO
 
 -- Tablica za žanrove
 CREATE TABLE Zanrovi (
